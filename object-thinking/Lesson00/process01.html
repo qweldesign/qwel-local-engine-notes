@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 01 | コンストラクタを使って書き換える</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // ボールの定義
+      function Ball(p, v) {
+        this.x = p;
+        this.y = 0;
+        this.vx = v;
+        this.vy = 10; 
+      
+        this.update = function() {
+          // x, y をそれぞれの速度ずつ増加
+          this.x += this.vx;
+          this.y += this.vy;
+
+          this.vy++; // y座標の速度を増加（重力）
+          this.vy *= 0.99; // y座標の速度を減少（空気抵抗）
+
+          // もしx座標が端に着いたなら
+          if (this.x < 0 || this.x > width) {
+            this.vx *= -1; // 跳ね返る（x座標の速度が逆に）
+          }
+
+          // もしy座標が下端に着いたなら
+          if (this.y > height) {
+            this.vy *= -1; // 跳ね返る（y座標の速度が逆に）
+          }
+        }
+      }
+
+      // newキーワードを使って、変数にボールのインスタンスを代入する
+      let ball = new Ball(0, 10);
+
+      function setup() {
+        createCanvas(600, 400); // キャンバス作成
+        //frameRate(1); // フレームレートを設定（1秒間に1回だけ更新）
+        background(0); // 背景を塗りつぶす
+      }
+
+      function draw() {
+        // update関数を実行
+        ball.update();
+
+        // 描画
+        background(0, 50); // 円を描く前に背景を薄く塗りつぶす
+        circle(ball.x, ball.y, 30); // 円を描く
+      }
+
+    </script>
+  </body>
+</html>
