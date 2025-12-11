@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Lesson01 -01 | ビル群の描画</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- canvas要素を用意 -->
+  <canvas id="canvas"></canvas>
+  <!-- Three.js をCDNから読み込む -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.164.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.164.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+  import { setupThreeEnvironment } from '../lib/three-setup.js';
+  import { setupPointerLockControls } from '../lib/pointer-lock.js';
+  import { setupMovement } from '../lib/movement.js';
+  import * as THREE from 'three';
+
+  // 基本オブジェクト一式
+  const canvas = document.querySelector("#canvas");
+  const { renderer, scene, camera } = setupThreeEnvironment(canvas);
+
+  // PointerLockControls
+  const { controls, isLockedRef } = setupPointerLockControls(camera, renderer.domElement);
+
+  // Movement
+  const movement = setupMovement(camera);
+
+  // ビル群の生成 (大量の立方体をランダムに配置)
+  for (let i = 0; i < 100; i++) {
+    const billGeo = new THREE.BoxGeometry(
+      Math.random() * 10,
+      Math.random() * 50,
+      Math.random() * 10
+    );
+    const billMat = new THREE.MeshPhongMaterial({ color: 0x4488ff });
+    const bill = new THREE.Mesh(billGeo, billMat);
+    bill.castShadow = bill.receiveShadow = true;
+    bill.position.set(
+      Math.random() * 100 - 50,
+      0,
+      Math.random() * 100 - 50
+    );
+    bill.rotation.y = Math.random() * Math.PI;
+    scene.add(bill);
+  }
+
+  // 毎フレーム呼ばれるループ処理
+  function tick() {
+    // pointer-lock.js 側の状態を見る
+    if (isLockedRef()) {
+      // movement.js 側で計算した移動ベクトルをカメラに反映
+      const dir = movement.getMovementVector();
+      camera.position.add(dir);
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+
+  // Start!!
+  tick();
+
+</script>
+</body>
+</html>
