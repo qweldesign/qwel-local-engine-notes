@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>Lesson00 - 00 | CDNを使ってThree.jsを読み込む</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <!-- canvas要素を用意 -->
+  <canvas id="canvas"></canvas>
+  <!-- Three.js をCDNから読み込む -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.164.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.164.0/examples/jsm/"
+    }
+  }
+  </script>
+  <!-- モジュール版のスクリプトを記述していく -->
+  <script type="module">
+    // Three.js のグローバル名前空間を "THREE" としてインポート
+
+    // 1.レンダラーを作成
+
+    // 2.シーンを作成
+
+    // 3.カメラを作成
+
+    // 4.光源を作成
+    
+    // 5.地面を作成
+
+    // 6.立方体を配置してみる
+
+    // 7.立方体をアニメーションさせてみる
+
+    // レンダリング開始
+
+  </script>
+</body>
+</html>
