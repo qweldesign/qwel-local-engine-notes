@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson01 | p5.jsを用いた基礎演習</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 座標を定義
+      let x = 0;
+      let y = 0;
+      // 座標の移動距離（速度）を定義
+      let vx = 10;
+      let vy = 10;
+
+      // 最初に1度だけ行われる処理
+      function setup() {
+        createCanvas(600, 400); // キャンバス作成 
+        //frameRate(1); // フレームレートを設定（1秒間に1回だけ更新）
+        background(0); // 背景を塗りつぶす
+      }
+
+      // ループ処理
+      function draw() {
+        // x, y をそれぞれの速度ずつ増加
+        x += vx;
+        y += vy;
+
+        vy++; // y座標の速度を増加（重力）
+        vy *= 0.99; // y座標の速度を減少（空気抵抗）
+
+        // もしx座標が端に着いたなら
+        if (x < 0 || x > width) {
+          vx *= -1; // 跳ね返る（x座標の速度が逆に）
+        }
+        
+        // もしy座標が下端に着いたなら
+        if (y > height) {
+          vy *= -1; // 跳ね返る（y座標の速度が逆に）
+        }
+
+        background(0, 50); // 円を描く前に背景を薄く塗りつぶす
+        circle(x, y, 30); // 円を描く
+      }
+    </script>
+  </body>
+</html>

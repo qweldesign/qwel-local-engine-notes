@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson01 - 03 | アニメーション描画を理解する</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 座標を定義
+      let x = 0;
+      let y = 0;
+
+      // 最初に1度だけ行われる処理
+      function setup() {
+        createCanvas(600, 400); // キャンバス作成 
+        frameRate(1); // フレームレートを設定（1秒間に1回だけ更新）
+        background(0); // 背景を塗りつぶす
+      }
+
+      // ループ処理
+      function draw() {
+        // x, y を10ずつ増加
+        x += 10;
+        y += 10;
+
+        background(0, 50); // 円を描く前に背景を薄く塗りつぶす
+        circle(x, y, 30); // 円を描く
+      }
+    </script>
+  </body>
+</html>

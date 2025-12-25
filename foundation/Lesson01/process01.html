@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson01 - 01 | setup関数とdraw関数を理解する</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 仮に変数timeを定義
+      let time = 0;
+
+      // 最初に1度だけ行われる処理
+      function setup() {
+        frameRate(1); // フレームレートを設定（1秒間に1回だけ更新）
+      }
+
+      // ループ処理
+      function draw() {
+        time++; // timeをインクリメント（1ずつ増加）
+        console.log(time); // timeをコンソールに出力
+      }
+    </script>
+  </body>
+</html>
