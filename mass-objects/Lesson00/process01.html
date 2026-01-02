@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 01 | 配列の扱い</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 最初に1度だけ行われる処理
+      function setup() {
+        // キャンバスを作成
+        // このときの引数の中身は以後、width または height として参照可能
+        createCanvas(600, 400);
+
+        // 背景を塗りつぶす
+        background(0);
+
+        // [] を用いて、空の配列を作成
+        const balls = [];
+
+        // Math.random() を、配列に挿入 (3回行う)
+        balls.push(Math.random());
+        balls.push(Math.random());
+        balls.push(Math.random());
+
+        // 変数名[n] で、配列の中身にアクセス
+        circle(balls[0] * width, height / 2, 10);  // 円を描く
+        circle(balls[1] * width, height / 2, 10);
+        circle(balls[2] * width, height / 2, 10);
+        // → リロード (Ctrl + R) を繰り返して確かめてみよう
+      }
+    </script>
+  </body>
+</html>

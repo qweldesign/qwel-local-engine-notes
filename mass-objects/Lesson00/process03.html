@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 03 | オブジェクトの扱い</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 最初に1度だけ行われる処理
+      function setup() {
+        // キャンバスを作成
+        // このときの引数の中身は以後、width または height として参照可能
+        createCanvas(600, 400);
+
+        // 背景を塗りつぶす
+        background(0);
+
+        // [] を用いて、空の配列を作成
+        const balls = [];
+
+        // Math.random() を、配列に挿入 (10回行う)
+        for (let i = 0; i < 10; i++) {
+
+          // {} を用いて、空のオブジェクトを作成
+          const ball = {};
+
+          // オブジェクトのプロパティ(キー)に値を代入
+          ball.x = Math.random() * width;
+          ball.y = height / 2;
+          ball.r = i * 5; // 仮に半径を i に比例させてみる
+
+          // オブジェクトを配列に挿入
+          balls.push(ball);
+        }
+
+        for (let i = 0; i < 10; i++) {
+          // 変数名[n] で、配列の中身にアクセス
+          const ball = balls[i];
+          // 変数名.キー で、オブジェクトのプロパティにアクセス
+          circle(ball.x, ball.y, ball.r);  // 円を描く
+        }
+      }
+    </script>
+  </body>
+</html>

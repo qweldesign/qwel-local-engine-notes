@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 02 | for文 (繰り返し処理)</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 最初に1度だけ行われる処理
+      function setup() {
+        // キャンバスを作成
+        // このときの引数の中身は以後、width または height として参照可能
+        createCanvas(600, 400);
+
+        // 背景を塗りつぶす
+        background(0);
+
+        // [] を用いて、空の配列を作成
+        const balls = [];
+
+        // Math.random() を、配列に挿入 (for文を用いて10回行う)
+        for (let i = 0; i < 10; i++) {
+          balls.push(Math.random());
+        }
+
+        for (let i = 0; i < 10; i++) {
+          // 変数名[n] で、配列の中身にアクセス
+          circle(balls[i] * width, height / 2, 10);  // 円を描く
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 05 | 大量のアニメーション</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // グローバル変数として宣言することで、setup/draw 両関数内で参照できる
+      // [] を用いて、空の配列を作成
+      const balls = [];
+
+      // 最初に1度だけ行われる処理
+      function setup() {
+        createCanvas(600, 400);
+      }
+
+      // ループ処理
+      // この中で新しいオブジェクトを生成し、配列に追加していく
+      function draw() {
+        // {} を用いて、空のオブジェクトを作成
+        const ball = {};
+        
+        // オブジェクトのプロパティ(キー)に値を代入
+        ball.x = Math.random() * width, // 画面幅内にランダムで配置
+        ball.y = 0, // 画面上部に配置
+        ball.r = 10; // 半径は一定とする
+
+        // 配列にオブジェクトを挿入する
+        balls.push(ball);
+
+        // 描画毎に背景を塗りつぶす
+        background(0); 
+
+        // for文
+        // 配列は length プロパティで、配列の要素の数にアクセスできる
+        for (let i = 0; i < balls.length; i++) {
+          // 変数名[n] で、配列の中身にアクセス
+          const ball = balls[i];
+          // 変数名.キー で、オブジェクトのプロパティにアクセス
+          ball.y++; // y座標をインクリメント (簡単な動き)
+          circle(ball.x, ball.y, ball.r); // 円を描く
+        }
+      }
+    </script>
+  </body>
+</html>

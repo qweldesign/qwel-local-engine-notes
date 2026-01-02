@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Lesson00 - 00 | 乱数の扱い</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js"></script>
+    <script>
+      // 最初に1度だけ行われる処理
+      function setup() {
+        // キャンバスを作成
+        // このときの引数の中身は以後、width または height として参照可能
+        createCanvas(600, 400);
+
+        // 背景を塗りつぶす
+        background(0);
+
+        // Math.random() は、0～1の間のランダムな小数を生成する
+        const r = Math.random();
+
+        // r に width を掛け算すれば、画面幅内のどこかランダムな場所に配置される
+        // height / 2 とすれば、画面高さの中央に配置される
+        // → リロード (Ctrl + R) を繰り返して確かめてみよう
+        circle(r * width, height / 2, 10); // 円を描く
+      }
+    </script>
+  </body>
+</html>
